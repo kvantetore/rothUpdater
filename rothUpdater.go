@@ -61,7 +61,7 @@ func listValues(url string) error {
 }
 
 func setTemperature(url string, sensorIds []int, temperature float32) error {
-	for sensorID := range sensorIds {
+	for _, sensorID := range sensorIds {
 		err := roth.SetTargetTemperature(url, sensorID, temperature)
 		if err != nil {
 			return err
@@ -71,7 +71,7 @@ func setTemperature(url string, sensorIds []int, temperature float32) error {
 }
 
 func setMode(url string, sensorIds []int, mode int) error {
-	for sensorID := range sensorIds {
+	for _, sensorID := range sensorIds {
 		err := roth.SetMode(url, sensorID, mode)
 		if err != nil {
 			return err
@@ -81,7 +81,7 @@ func setMode(url string, sensorIds []int, mode int) error {
 }
 
 func setProgram(url string, sensorIds []int, program int) error {
-	for sensorID := range sensorIds {
+	for _, sensorID := range sensorIds {
 		err := roth.SetProgram(url, sensorID, program)
 		if err != nil {
 			return err
