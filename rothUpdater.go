@@ -32,7 +32,7 @@ func listValues(url string) error {
 	}
 
 	writer := tabwriter.NewWriter(os.Stdout, 0, 1, 2, ' ', tabwriter.AlignRight | tabwriter.Debug)
-	fmt.Fprintf(writer, "Sensor\tValve State\tTarget Temp\tCurrent Temp\tMode\tProgram\t\n")
+	fmt.Fprintf(writer, "Id\tSensor\tValve State\tTarget Temp\tCurrent Temp\tMode\tProgram\t\n")
 	for _, sensor := range sensors {
 		var program string
 		switch sensor.Program {
@@ -54,7 +54,7 @@ func listValues(url string) error {
 			case roth.ModeHoliday:
 				mode = "Holiday"
 		}
-		fmt.Fprintf(writer, "%v\t%v\t%.2f\t%.2f\t%v\t%v\t\n", sensor.Name, sensor.GetValveState(), sensor.RoomTemperature, sensor.TargetTemperature, mode, program)
+		fmt.Fprintf(writer, "%v\t%v\t%v\t%.2f\t%.2f\t%v\t%v\t\n", sensor.Id, sensor.Name, sensor.GetValveState(), sensor.RoomTemperature, sensor.TargetTemperature, mode, program)
 	}
 	writer.Flush()
 	return nil
